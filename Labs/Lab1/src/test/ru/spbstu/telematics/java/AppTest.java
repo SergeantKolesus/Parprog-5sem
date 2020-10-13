@@ -34,11 +34,13 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
+    /*
     public void testApp()
     {
         assertTrue( true );
         System.out.println("3");
     }
+    //*/
 
     @org.junit.Test
     public void testSimple()
@@ -52,6 +54,7 @@ public class AppTest
         assertEquals("3 = 1 * 3", myApp.SimpleDividers(3));
         assertEquals("5 = 1 * 5", myApp.SimpleDividers(5));
         assertEquals("7 = 1 * 7", myApp.SimpleDividers(7));
+        assertEquals("113 = 1 * 113", myApp.SimpleDividers(113));
         //assertEquals("2 = 1 ");
 
         System.out.println("================================================================");
@@ -65,8 +68,26 @@ public class AppTest
         System.out.println("================================================================");
         System.out.println("Testing complex numbers");
 
-        assertEquals("6 = 1 * 2 * 3", myApp.SimpleDividers(6));
-        assertEquals("15 = 1 * 3 * 5", myApp.SimpleDividers(15));
+        assertEquals("6 = 2 * 3", myApp.SimpleDividers(6));
+        assertEquals("15 = 3 * 5", myApp.SimpleDividers(15));
+        assertEquals("4 = 2^2", myApp.SimpleDividers(4));
+        assertEquals("16 = 2^4", myApp.SimpleDividers(16));
+        assertEquals("36 = 2^2 * 3^2", myApp.SimpleDividers(36));
+        assertEquals("362880 = 2^7 * 3^4 * 5 * 7", myApp.SimpleDividers(362880));
+        //assertEquals("2 = 1 ");
+
+        System.out.println("================================================================");
+    }
+
+    @org.junit.Test
+    public void testSpecial()
+    {
+        App myApp = new App();
+
+        System.out.println("================================================================");
+        System.out.println("Testing special ocasion");
+
+        assertEquals("1 = 1", myApp.SimpleDividers(1));
         //assertEquals("2 = 1 ");
 
         System.out.println("================================================================");

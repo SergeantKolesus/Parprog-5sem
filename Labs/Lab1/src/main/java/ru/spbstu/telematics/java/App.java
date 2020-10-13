@@ -15,13 +15,8 @@ public class App
         int[] rest = new int[number];
         int candidate;
         boolean isSimple;
-
-        System.out.println(number);
-
         isSimple = true;
         candidate  = simples.get(number - 1) + 2;
-
-        System.out.println(candidate);
 
         for(int i = 0; i < number; i++)
         {
@@ -60,9 +55,13 @@ public class App
         simples.add(2);
         simples.add(3);
 
-        res = Integer.toString(val) + " = 1";
+        //res = Integer.toString(val) + " = ";
+        res = "";
         deg = 0;
         i = 0;
+
+        if(val == 1)
+            return "1 = 1";
 
         while(restVal != 1)
         {
@@ -75,9 +74,10 @@ public class App
             {
                 if(deg != 0)
                 {
-                    res += " * " + simples.get(i);
+                    res += simples.get(i);
                     if(deg != 1)
-                        res += " ^ " + deg;
+                        res += "^" + deg;
+                    res += " * ";
                 }
 
                 deg = 0;
@@ -85,12 +85,23 @@ public class App
 
                 if(i == simples.size())
                     simples.add(_getNextSimple(simples));
+
+                if(simples.get(i) == val)
+                    break;
             }
         }
 
-        res += " * " + simples.get(i);
-        if(deg != 1)
-            res += " ^ " + deg;
+        if( (res.length() == 0) && (deg <= 1))
+            res = "1 * ";
+
+        res += simples.get(i);
+        if(deg > 1)
+            res += "^" + deg;
+        //res += " * ";
+
+        //res = res.substring(0, res.length() - 3);
+
+        res = val + " = "+ res;
 
         return res;
 
