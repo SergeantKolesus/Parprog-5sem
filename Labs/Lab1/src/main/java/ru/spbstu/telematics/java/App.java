@@ -46,7 +46,7 @@ public class App
         return candidate;
     }
 
-	private static String _simpleDividers(int val)
+	public static String SimpleDividers(int val)
 	{
 	    int restVal;
 	    int i;
@@ -99,7 +99,7 @@ public class App
     public static void main( String[] args )
     {
         if(args.length > 0)
-        	System.out.println( _simpleDividers(Integer.parseInt(args[0]) ) );
+        	System.out.println( SimpleDividers(Integer.parseInt(args[0]) ) );
         else
         	System.out.println( "No input params" );
     }
