@@ -107,6 +107,74 @@ public class App
 
 	}
 
+	public static ArrayList<int[]> SimpleDividersArray(int val)
+    {
+        int restVal;
+        int i;
+        int deg;
+        ArrayList<int[]> res;
+
+        restVal = val;
+
+        ArrayList<Integer> simples = new ArrayList<Integer>();
+
+        simples.add(2);
+        simples.add(3);
+
+        deg = 0;
+        i = 0;
+
+        if(val == 1)
+            return null;
+
+        res = new ArrayList<int[]>();
+
+        while(restVal != 1)
+        {
+            if( (restVal % simples.get(i)) == 0)
+            {
+                deg++;
+                restVal /= simples.get(i);
+            }
+            else
+            {
+                if(deg != 0)
+                {
+                    res.add(new int[]{simples.get(i), deg});
+                }
+
+                deg = 0;
+                i++;
+
+                if(i == simples.size())
+                    simples.add(_getNextSimple(simples));
+
+                if(simples.get(i) == val)
+                    break;
+            }
+        }
+
+        res.add(new int[]{simples.get(i), deg});
+
+        return res;
+    }
+
+    public static int UnpackRepresentation(ArrayList<int[]> representation)
+    {
+        if(representation == null)
+            return 1;
+
+        int res = 1;
+
+        for (int[] simple: representation)
+        {
+            for(int i = 1; i < simple[1]; i++)
+                res *= simple[0];
+        }
+
+        return res;
+    }
+
     public static void main( String[] args )
     {
         if(args.length > 0)
