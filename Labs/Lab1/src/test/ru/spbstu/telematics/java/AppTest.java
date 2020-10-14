@@ -48,7 +48,7 @@ public class AppTest
         App myApp = new App();
 
         System.out.println("================================================================");
-        System.out.println("Testing simple numbers");
+        System.out.println("Testing string representation of simple numbers");
 
         assertEquals("2 = 1 * 2", myApp.SimpleDividers(2));
         assertEquals("3 = 1 * 3", myApp.SimpleDividers(3));
@@ -66,7 +66,7 @@ public class AppTest
         App myApp = new App();
 
         System.out.println("================================================================");
-        System.out.println("Testing complex numbers");
+        System.out.println("Testing string representation of complex numbers");
 
         assertEquals("6 = 2 * 3", myApp.SimpleDividers(6));
         assertEquals("15 = 3 * 5", myApp.SimpleDividers(15));
@@ -85,10 +85,24 @@ public class AppTest
         App myApp = new App();
 
         System.out.println("================================================================");
-        System.out.println("Testing special ocasion");
+        System.out.println("Testing string representation of special ocasion");
 
         assertEquals("1 = 1", myApp.SimpleDividers(1));
         //assertEquals("2 = 1 ");
+
+        System.out.println("================================================================");
+    }
+
+    @org.junit.Test
+    public void testArrays()
+    {
+        App myApp = new App();
+
+        System.out.println("================================================================");
+        System.out.println("Testing array represintation");
+
+        for(int i = 1; i < 1000; i++)
+            assertEquals(i, myApp.UnpackRepresentation(myApp.SimpleDividersArray(i)));
 
         System.out.println("================================================================");
     }

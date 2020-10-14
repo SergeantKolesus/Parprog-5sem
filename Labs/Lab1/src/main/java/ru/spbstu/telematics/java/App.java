@@ -149,8 +149,11 @@ public class App
                 if(i == simples.size())
                     simples.add(_getNextSimple(simples));
 
-                if(simples.get(i) == val)
-                    break;
+                /*
+                if(simples.get(i) == val) {
+                    res.add(new int[]{simples.get(i), deg + })
+                }
+                //*/
             }
         }
 
@@ -168,7 +171,7 @@ public class App
 
         for (int[] simple: representation)
         {
-            for(int i = 1; i < simple[1]; i++)
+            for(int i = 0; i < simple[1]; i++)
                 res *= simple[0];
         }
 
@@ -177,9 +180,18 @@ public class App
 
     public static void main( String[] args )
     {
-        if(args.length > 0)
-        	System.out.println( SimpleDividers(Integer.parseInt(args[0]) ) );
+        ArrayList<int[]> res;
+
+        if(args.length > 0) {
+            res = SimpleDividersArray(Integer.parseInt(args[0]));
+            //System.out.println( SimpleDividers(Integer.parseInt(args[0]) ) );
+            for (int i = 0; i < res.size(); i++)
+                System.out.println(res.get(i)[0] + "^" + res.get(i)[1] + " = " + UnpackRepresentation(res));
+        }
         else
         	System.out.println( "No input params" );
+
+
+
     }
 }
