@@ -97,10 +97,6 @@ public class App
         res += simples.get(i);
         if(deg > 1)
             res += "^" + deg;
-        //res += " * ";
-
-        //res = res.substring(0, res.length() - 3);
-
         res = val + " = "+ res;
 
         return res;
