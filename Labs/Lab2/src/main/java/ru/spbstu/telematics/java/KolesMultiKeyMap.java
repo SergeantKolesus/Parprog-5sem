@@ -23,32 +23,31 @@ public class KolesMultiKeyMap
         elements = new ArrayList<ArrayField>();
     }
 
-    public int Size()
+    public int size()
     {
         return elements.size();
     }
 
-    public boolean Contains(MultiKey key)
+    public boolean contains(MultiKey key)
     {
         ArrayField f = new ArrayField(key, 0);
 
         return elements.contains(f);
     }
 
-    public <T> void Add(MultiKey key, T val)
+    public <T> void add(MultiKey key, T val)
     {
         ArrayField f = new ArrayField(key, val);
 
         if(elements.contains(f))
         {
             elements.remove(elements.indexOf(f));
-            System.out.println("Match");
         }
 
         elements.add(f);
     }
 
-    public void Remove(MultiKey key)
+    public void remove(MultiKey key)
     {
         ArrayField f = new ArrayField(key, 0);
 
@@ -56,7 +55,7 @@ public class KolesMultiKeyMap
             elements.remove(elements.indexOf(f));
     }
 
-    public <T> T Get(MultiKey key)
+    public <T> T get(MultiKey key)
     {
         ArrayField f = new ArrayField(key, 0);
 

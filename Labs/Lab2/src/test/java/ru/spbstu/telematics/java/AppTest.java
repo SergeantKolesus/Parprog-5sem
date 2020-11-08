@@ -5,10 +5,13 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.keyvalue.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 /**
  * Unit test for simple App.
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppTest 
     extends TestCase
 {
@@ -33,8 +36,9 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testN3App()
     {
+        /*
         MultiKeyMap mkMap = new MultiKeyMap();
         MultiKey mk = new MultiKey("Oh", "Hey");
 
@@ -45,7 +49,7 @@ public class AppTest
         System.out.println(mkMap + " size " + mkMap.size());
         System.out.println(mkMap.get("EN", "Label_Name"));
         System.out.println(mkMap.get("Label_Name", "EN"));
-        //*/
+        ///
 
         KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
 
@@ -75,18 +79,162 @@ public class AppTest
         /*
         if(a != (b - 1) )
             assertTrue(false);
-//*/
+///
         System.out.println((int)myMultikey.Get(new MultiKey("3", "4")));
 
         assertTrue( true );
+
+        //*/
+
     }
 
-    public void testAdd()
+    public void testN1Size()
     {
+        System.out.println("================================================================");
+        System.out.println("Testing size method");
+
         KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        myMultikey.CreateTestSetup();
+
+        assertTrue(myMultikey.size() == 10);
+
+        System.out.println("================================================================");
+    }
+
+    public void testN2Contains()
+    {
+        System.out.println("================================================================");
+        System.out.println("Testing contains method");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        String[] keys = new String[2];
+
+        keys[0] = "0";
 
         myMultikey.CreateTestSetup();
-        myMultikey.Add(new MultiKey("2", "3"), "Hello");
-        myMultikey.Print();
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            if(!myMultikey.contains(new MultiKey(keys[0], keys[1])))
+                assertTrue(false);
+
+            keys[0] = keys[1];
+        }
+
+        assertTrue(true);
+
+        System.out.println("================================================================");
+    }
+
+    public void testN3Get()
+    {
+        System.out.println("================================================================");
+        System.out.println("Testing get method");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        String[] keys = new String[2];
+
+        keys[0] = "0";
+
+        myMultikey.CreateTestSetup();
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            if((int)myMultikey.get(new MultiKey(keys[0], keys[1])) != i)
+                assertTrue(false);
+
+            keys[0] = keys[1];
+        }
+
+        assertTrue(true);
+
+        System.out.println("================================================================");
+    }
+
+    public void testN4Add()
+    {
+        System.out.println("================================================================");
+        System.out.println("Testing add method");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        String[] keys = new String[2];
+
+        keys[0] = "0";
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            myMultikey.add(new MultiKey(keys[0], keys[1]), i);
+
+            if(!myMultikey.contains(new MultiKey(keys[0], keys[1])))
+                assertTrue(false);
+
+            if((int)myMultikey.get(new MultiKey(keys[0], keys[1])) != i)
+                assertTrue(false);
+
+            keys[0] = keys[1];
+        }
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            myMultikey.add(new MultiKey(keys[0], keys[1]), i * 2);
+
+            if(!myMultikey.contains(new MultiKey(keys[0], keys[1])))
+                assertTrue(false);
+
+            if((int)myMultikey.get(new MultiKey(keys[0], keys[1])) != i * 2)
+                assertTrue(false);
+
+            keys[0] = keys[1];
+        }
+
+        assertTrue(true);
+
+        System.out.println("================================================================");
+    }
+
+    public void testN5Remove()
+    {
+        System.out.println("================================================================");
+        System.out.println("Testing remove method");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        String[] keys = new String[2];
+
+        keys[0] = "0";
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            myMultikey.add(new MultiKey(keys[0], keys[1]), i);
+
+            keys[0] = keys[1];
+        }
+
+        keys[0] = "0";
+
+        for(int i = 0; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            myMultikey.remove(new MultiKey(keys[0], keys[1]));
+
+            if(myMultikey.contains(new MultiKey(keys[0], keys[1])))
+                assertTrue(false);
+
+            keys[0] = keys[1];
+        }
+
+        assertTrue(true);
+
+        System.out.println("================================================================");
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="ru.spbstu.telematics.java.AppTest" time="0.036" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="ru.spbstu.telematics.java.AppTest" time="0.024" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15+36-1562"/>
@@ -60,6 +60,10 @@
     <property name="sun.stdout.encoding" value="cp866"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testAdd" time="0.022"/>
-  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testApp" time="0.014"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN1Size" time="0.011"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN2Contains" time="0.005"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN3App" time="0"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN3Get" time="0.001"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN4Add" time="0.001"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testN5Remove" time="0.006"/>
 </testsuite>
