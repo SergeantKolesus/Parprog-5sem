@@ -13,4 +13,13 @@ public class ArrayField<T>
         value = val;
         key = mKey;
     }
+
+    //@Override
+    public boolean equals(Object o)
+    {
+        if(o == this)
+            return true;
+
+        return key.equals(((ArrayField)o).key);
+    }
 }

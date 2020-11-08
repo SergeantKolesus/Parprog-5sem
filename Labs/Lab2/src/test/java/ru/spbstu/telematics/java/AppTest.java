@@ -47,7 +47,7 @@ public class AppTest
         System.out.println(mkMap.get("Label_Name", "EN"));
         //*/
 
-        App myMultikey = new App();
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
 
         myMultikey.CreateTestSetup();
         myMultikey.Print();
@@ -60,7 +60,9 @@ public class AppTest
         mkMap.put("5", "6", 6);
         mkMap.put("6", "7", 7);
         mkMap.put("7", "8", 8);
-        mkMap.put("8", "9", 9);
+        mkMap.put("7", "8", 9);
+        mkMap.put("2", "3", "Hello");
+
 
         System.out.println(mkMap);
 
@@ -70,9 +72,21 @@ public class AppTest
         a = mkMap.size();
         b = myMultikey.Size();
 
+        /*
         if(a != (b - 1) )
             assertTrue(false);
-        
+//*/
+        System.out.println((int)myMultikey.Get(new MultiKey("3", "4")));
+
         assertTrue( true );
+    }
+
+    public void testAdd()
+    {
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+
+        myMultikey.CreateTestSetup();
+        myMultikey.Add(new MultiKey("2", "3"), "Hello");
+        myMultikey.Print();
     }
 }

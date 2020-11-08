@@ -12,39 +12,58 @@ import java.util.ArrayList;
 
 
 
-public class App
+public class KolesMultiKeyMap
 {
     private MultiKey mk;
 
     private ArrayList<ArrayField> elements;
 
-    public App()
+    public KolesMultiKeyMap()
     {
         elements = new ArrayList<ArrayField>();
-
-        //mk = new MultiKey();
     }
 
     public int Size()
     {
-        if(elements == null)
-            return 0;
-
         return elements.size();
     }
 
     public boolean Contains(MultiKey key)
     {
-        for(ArrayField k : elements)
-            if(key == k.key)
-                return true;
+        ArrayField f = new ArrayField(key, 0);
 
-        return false;
+        return elements.contains(f);
     }
 
-    public void Add()
+    public <T> void Add(MultiKey key, T val)
     {
+        ArrayField f = new ArrayField(key, val);
 
+        if(elements.contains(f))
+        {
+            elements.remove(elements.indexOf(f));
+            System.out.println("Match");
+        }
+
+        elements.add(f);
+    }
+
+    public void Remove(MultiKey key)
+    {
+        ArrayField f = new ArrayField(key, 0);
+
+        if(elements.contains(f))
+            elements.remove(elements.indexOf(f));
+    }
+
+    public <T> T Get(MultiKey key)
+    {
+        ArrayField f = new ArrayField(key, 0);
+
+        if(elements.contains(f))
+             return (T)((elements.get(elements.indexOf(f))).value);
+
+        return null;
     }
 
     public void CreateTestSetup()
