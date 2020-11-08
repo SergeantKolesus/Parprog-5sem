@@ -237,4 +237,43 @@ public class AppTest
 
         System.out.println("================================================================");
     }
+
+    public void testN6Iterable()
+    {
+        System.out.println("================================================================");
+        System.out.println("Testing iterable");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        String[] keys = new String[2];
+
+        keys[0] = "0";
+
+        for(int i = 1; i < 10; i++)
+        {
+            keys[1] = "" + i;
+
+            myMultikey.add(new MultiKey(keys[0], keys[1]), i);
+
+            keys[0] = keys[1];
+        }
+
+        int k = 0;
+
+        for(Object f : myMultikey)
+        {
+            if(!myMultikey.contains(((ArrayField)f).key))
+                assertTrue(false);
+
+            ((ArrayField)f).Print();
+
+            k++;
+        }
+
+
+
+        assertTrue(k == myMultikey.size());
+
+        System.out.println("================================================================");
+    }
+
 }

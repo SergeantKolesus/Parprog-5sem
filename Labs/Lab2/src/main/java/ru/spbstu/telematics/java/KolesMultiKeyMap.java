@@ -4,6 +4,7 @@ import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.keyvalue.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Hello world!
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 
 
-public class KolesMultiKeyMap
+public class KolesMultiKeyMap implements Iterable
 {
     private MultiKey mk;
 
@@ -86,6 +87,18 @@ public class KolesMultiKeyMap
             System.out.println(f.key + " " + f.value);
         }
     }
+
+    public boolean isEmpty()
+    {
+        return elements.size() == 0;
+    }
+
+    //@Override
+    public Iterator iterator() {
+        return new CustomIterator(elements);
+    }
+
+
 
     public static void main( String[] args )
     {

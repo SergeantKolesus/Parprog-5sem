@@ -22,4 +22,9 @@ public class ArrayField<T>
 
         return key.equals(((ArrayField)o).key);
     }
+
+    public void Print()
+    {
+        System.out.println("[" + key + "] " + value);
+    }
 }
