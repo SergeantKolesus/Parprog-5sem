@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.keyvalue.*;
+import org.graalvm.compiler.lir.alloc.lsra.ssa.SSALinearScan;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
@@ -269,9 +270,40 @@ public class AppTest
             k++;
         }
 
-
-
         assertTrue(k == myMultikey.size());
+
+        System.out.println("================================================================");
+    }
+
+    public void testN9SumUp()
+    {
+        System.out.println("================================================================");
+        System.out.println("Final test");
+
+        KolesMultiKeyMap myMultikey = new KolesMultiKeyMap();
+        MultiKeyMap mkMap = new MultiKeyMap();
+
+        myMultikey.add(new MultiKey("0", "1"), 1);
+        myMultikey.add(new MultiKey("1", "2"), 2);
+
+        mkMap.put("0", "1", 1);
+        mkMap.put("1", "2", 2);
+
+        System.out.println("Original object:");
+        System.out.println(mkMap);
+        System.out.println("Custom object:");
+        myMultikey.Print();
+        System.out.println("Original object size is " + mkMap.size() + " and custom object size is " + myMultikey.size());
+
+        System.out.println("Replacing field [0, 1], 1 to [0, 1] 0");
+
+        myMultikey.add(new MultiKey("0", "1"), 0);
+        mkMap.put("0", "1", 0);
+
+        System.out.println("Original object:");
+        System.out.println(mkMap);
+        System.out.println("Custom object:");
+        myMultikey.Print();
 
         System.out.println("================================================================");
     }
