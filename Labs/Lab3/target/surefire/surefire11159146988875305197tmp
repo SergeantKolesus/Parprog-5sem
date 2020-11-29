@@ -1,0 +1,26 @@
+#surefire
+#Sun Nov 29 19:30:32 MSK 2020
+classPathUrl.4=C\:\\Users\\serge\\.m2\\repository\\commons-io\\commons-io\\2.5\\commons-io-2.5.jar
+testSuiteDefinitionTestSourceDirectory=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\src\\test\\java
+includes1=**/*Test.java
+includes2=**/*TestCase.java
+runOrder=filesystem
+includes0=**/Test*.java
+reportsDirectory=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\target\\surefire-reports
+tc.0=ru.spbstu.telematics.java.AppTest
+surefireClassPathUrl.0=C\:\\Users\\serge\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-junit4\\2.12.4\\surefire-junit4-2.12.4.jar
+classPathUrl.0=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\target\\test-classes
+classPathUrl.1=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\target\\classes
+classPathUrl.2=C\:\\Users\\serge\\.m2\\repository\\junit\\junit\\4.12\\junit-4.12.jar
+classPathUrl.3=C\:\\Users\\serge\\.m2\\repository\\org\\hamcrest\\hamcrest-core\\1.3\\hamcrest-core-1.3.jar
+testClassesDirectory=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\target\\test-classes
+useManifestOnlyJar=true
+runStatisticsFile=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\.surefire-3BBA673B492A2E38F7F24435BC699D9D08064577
+providerConfiguration=org.apache.maven.surefire.junit4.JUnit4Provider
+failIfNoTests=false
+isTrimStackTrace=true
+surefireClassPathUrl.1=C\:\\Users\\serge\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.12.4\\surefire-api-2.12.4.jar
+excludes0=**/*$*
+enableAssertions=true
+childDelegation=false
+useSystemClassLoader=true
