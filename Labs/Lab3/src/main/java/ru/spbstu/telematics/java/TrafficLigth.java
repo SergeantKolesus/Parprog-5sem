@@ -9,9 +9,12 @@ public class TrafficLigth extends Thread
     private ArrayList<Direction[]> directions;
     private ArrayList<Car> cars;
     private int state;
+    public boolean isAlive;
 
     public TrafficLigth()
     {
+        isAlive = true;
+
         directions = new ArrayList<Direction[]>();
 
         directions.add(new Direction[] {new Direction('r', 'd'), new Direction('r', 'l')});
@@ -36,6 +39,8 @@ public class TrafficLigth extends Thread
 
     public void AddCar(Car car)
     {
+        System.out.println("Car added");
+
         cars.add(car);
     }
 
@@ -47,6 +52,8 @@ public class TrafficLigth extends Thread
         callbacks = new boolean[cars.size()];
         callbacksGiven = new boolean[cars.size()];
 
+        System.out.println("Creating callbacks with size " + cars.size());
+
         for(int i = 0; i < callbacks.length; i++)
         {
             callbacks[i] = false;
@@ -56,15 +63,27 @@ public class TrafficLigth extends Thread
 
     public void GiveCallback(int i, boolean state)
     {
+        if( (callbacks == null) || (i >= callbacks.length) || (i >= callbacksGiven.length) )
+        {
+            System.out.println("To big i " + i);
+            return;
+        }
+
+        if(callbacksGiven[i] == false)
+            System.out.println("Callback " + i + " recieved");
+
         callbacks[i] = state;
         callbacksGiven[i] = true;
+
+        //System.out.println("Callback recieved " + i);
     }
 
     private boolean _callbacksGiven()
     {
-        for(int i = 0; i < callbacks.length; i++)
+        for(int i = 0; i < callbacksGiven.length; i++)
         {
-            if(!callbacks[i])
+
+            if(!callbacksGiven[i])
                 return false;
         }
 
@@ -73,29 +92,39 @@ public class TrafficLigth extends Thread
 
     public void run()
     {
-        System.out.println("");
-
         for(state = 0; state < cars.size(); state++)
         {
             _initCallbacks();
+
+            System.out.println("Traffic ligth is avaiting callbacks at state " + state + " with " + cars.size() + " linked cars") ;
 
             while(!_callbacksGiven())
                 ;
 
             int step = 0;
+            //callbacks = null;
 
             for(int i = 0; i < cars.size(); i++)
                 if(callbacks[i + step] == true)
                 {
                     cars.remove(i);
 
-                    for(int j = i; j < cars.size(); j++)
+                    for(int j = i; j < cars.size(); j++) {
+                        System.out.println("Car number updated to " + j);
                         cars.get(j).SetNumber(j);
+                    }
 
                     i--;
                     step++;
                 }
         }
+
+        isAlive = false;
+    }
+
+    public void activate()
+    {
+
     }
 
     /*

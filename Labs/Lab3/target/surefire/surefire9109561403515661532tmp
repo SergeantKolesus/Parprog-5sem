@@ -1,5 +1,5 @@
 #surefire
-#Sun Nov 29 19:30:32 MSK 2020
+#Sun Nov 29 22:38:43 MSK 2020
 classPathUrl.4=C\:\\Users\\serge\\.m2\\repository\\commons-io\\commons-io\\2.5\\commons-io-2.5.jar
 testSuiteDefinitionTestSourceDirectory=G\:\\Univer\\parprog\\Parprog-5sem\\Labs\\Lab3\\src\\test\\java
 includes1=**/*Test.java

@@ -21,6 +21,7 @@ public class App
         cars.add(new Car('d', 'u'));
         cars.add(new Car('l', 'r'));
 
+        System.out.println("Created cars");
     }
 
     public void InitTrafficLigth()
@@ -34,6 +35,7 @@ public class App
             cars.get(i).SetNumber(i);
         }
 
+        System.out.println("Tl created");
     }
 
     public static void main( String[] args )

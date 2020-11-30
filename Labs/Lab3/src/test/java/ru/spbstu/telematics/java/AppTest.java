@@ -10,6 +10,7 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+
     /**
      * Create the test case
      *
@@ -43,15 +44,40 @@ public class AppTest
         app.CreateCars();
         app.InitTrafficLigth();
 
-        app.tLigth.run();
+        Runnable task = () -> {
+            app.tLigth.run();
+        };
+
+        Thread t = new Thread(task);
+        t.start();
+
+        //app.tLigth.start();
+
+        System.out.println("Tl launched");
         //TrafficLigth tl = new TrafficLigth();
 
         for(int i = 0; i < 5; i++)
         {
-            app.tLigth.AddCar(app.cars.get(i));
-            app.cars.get(i).run();
+
+
+//            ts[i] = new Thread(task);
+  //          ts[i].start();
+
+            System.out.println("Working with car " + i);
+
+            app.cars.get(i).activate();
+
+          /*
+            Car c =app.cars.get(i);
+
+            System.out.println("Starting car");
+
+            //app.tLigth.AddCar(app.cars.get(i));
+            c.start();
+            //*/
         }
 //*/
-
+        while(app.tLigth.isAlive)
+            ;
     }
 }
