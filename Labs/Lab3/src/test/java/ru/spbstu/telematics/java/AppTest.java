@@ -38,7 +38,28 @@ public class AppTest
     }
 
     @org.junit.Test
-    public void testA()
+    public void testB()
+    {
+        TrafficLigth tl = new TrafficLigth();
+
+        System.out.println("Created traffic ligth");
+
+        tl.CreateCar('u', 'd', tl, 0);
+        tl.CreateCar('r', 'l', tl, 1);
+        tl.CreateCar('r', 'd', tl, 2);
+        tl.CreateCar('d', 'u', tl, 3);
+        tl.CreateCar('l', 'r', tl, 4);
+
+        System.out.println("Cars created");
+
+        tl.RunCars();
+
+        System.out.println("Cars activated");
+
+        tl.Start();
+    }
+
+    public void nontestA()
     {
         App app = new App();
         app.CreateCars();

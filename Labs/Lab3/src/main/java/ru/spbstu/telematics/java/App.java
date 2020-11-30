@@ -15,11 +15,6 @@ public class App
     {
         cars = new ArrayList<Car>();
 
-        cars.add(new Car('u', 'd'));
-        cars.add(new Car('r', 'l'));
-        cars.add(new Car('r', 'd'));
-        cars.add(new Car('d', 'u'));
-        cars.add(new Car('l', 'r'));
 
         System.out.println("Created cars");
     }

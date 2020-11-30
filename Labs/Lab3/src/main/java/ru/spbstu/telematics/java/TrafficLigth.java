@@ -14,6 +14,7 @@ public class TrafficLigth extends Thread
     public TrafficLigth()
     {
         isAlive = true;
+        turnedOn = false;
 
         directions = new ArrayList<Direction[]>();
 
@@ -42,6 +43,17 @@ public class TrafficLigth extends Thread
         System.out.println("Car added");
 
         cars.add(car);
+    }
+
+    public void CreateCar(char from, char to, TrafficLigth tl, int number)
+    {
+        cars.add(new Car(from ,to, tl, number));
+    }
+
+    public void RunCars()
+    {
+        for(Car car : cars)
+            car.activate();
     }
 
     private boolean[]  callbacks;
@@ -122,8 +134,58 @@ public class TrafficLigth extends Thread
         isAlive = false;
     }
 
-    public void activate()
+    public boolean turnedOn;
+
+    public void TurnOffCars()
     {
+        for(Car car : cars)
+            car.isAsleep = true;
+
+        System.out.println("Cars set asleep");
+    }
+
+    public  void AwakeCars()
+    {
+        for(Car car : cars)
+            car.isAsleep = false;
+
+        System.out.println("Cars awaken");
+    }
+
+    public void Start()
+    {
+        int step;
+
+        for(state = 0; state < 3; state++)
+        {
+            TurnOffCars();
+
+            _initCallbacks();
+
+            AwakeCars();
+
+            while(!_callbacksGiven())
+                ;
+
+            step = 0;
+
+            for(int i = 0; i < cars.size(); i++)
+                if(callbacks[i + step] == true)
+                {
+                    cars.remove(i);
+
+                    for(int j = i; j < cars.size(); j++) {
+                        System.out.println("Car number updated from " + (int)(j + 1) + " to " + j);
+                        cars.get(j).SetNumber(j);
+                    }
+
+                    i--;
+                    step++;
+                }
+
+            System.out.println("State " + state + " ended");
+        }
+
 
     }
 

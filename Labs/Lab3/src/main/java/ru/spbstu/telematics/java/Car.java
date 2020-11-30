@@ -15,17 +15,14 @@ public class Car extends Thread
         updateState = true;
     }
 
-    public Car(char from, char to)
-    {
-        direction = new Direction(from, to);
-        number = -1;
-    }
-
-    public Car(char from, char to, TrafficLigth tl)
+    public Car(char from, char to, TrafficLigth tl, int n)
     {
         direction = new Direction(from, to);
         tLigth = tl;
-        number = -1;
+        number = n;
+        isAsleep = true;
+
+        System.out.println("Created car number " + n + " with tl " + tl);
     }
 
     public void SetTrafficLigth(TrafficLigth tl)
@@ -49,6 +46,7 @@ public class Car extends Thread
     boolean callbackPrinted;
     boolean initPrinted;
 
+    /*
     @Override
     public void run()
     {
@@ -106,6 +104,44 @@ public class Car extends Thread
 
         System.out.println("Car " + number + " released");
     }
+     */
+
+    public void run()
+    {
+        boolean isFree = false;
+        Direction[] curDir;
+
+        while (!isFree)
+        {
+            if(!isAsleep)
+            {
+                curDir = tLigth.GetState();
+
+                if(curDir == null)
+                    continue;
+
+                System.out.println("Car number " + number + "succesfully got state");
+
+                for(int i = 0; i < curDir.length; i++)
+                    if( (curDir[i].from == direction.from) && (curDir[i].to == direction.to) )
+                    {
+                        isFree = true;
+                        System.out.println("Car number " + number + " released");
+                        break;
+                    }
+
+                if(!isFree)
+                {
+                    System.out.println("Car number " + number + " staying on crossroad");
+                }
+
+                isAsleep = true;
+                tLigth.GiveCallback(number, isFree);
+            }
+        }
+    }
+
+    public boolean isAsleep;
 
     public void activate()
     {
