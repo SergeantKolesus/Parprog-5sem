@@ -21,6 +21,7 @@ public class App
 
     public void InitTrafficLigth()
     {
+        /*
         tLigth = new TrafficLigth();
 
         for(int i = 0; i < 5; i++)
@@ -29,7 +30,7 @@ public class App
             cars.get(i).SetTrafficLigth(tLigth);
             cars.get(i).SetNumber(i);
         }
-
+        //*/
         System.out.println("Tl created");
     }
 

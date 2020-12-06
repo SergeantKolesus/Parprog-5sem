@@ -138,6 +138,13 @@ public class Car extends Thread
                 isAsleep = true;
                 tLigth.GiveCallback(number, isFree);
             }
+
+            try {
+                Thread.sleep(300);
+            }
+            catch (InterruptedException exc) {
+                System.out.println(exc);
+            }
         }
     }
 

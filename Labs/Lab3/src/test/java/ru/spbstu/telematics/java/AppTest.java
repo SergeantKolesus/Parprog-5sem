@@ -3,6 +3,7 @@ package ru.spbstu.telematics.java;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import sun.text.resources.ext.JavaTimeSupplementary_zh_SG;
 
 /**
  * Unit test for simple App.
@@ -67,6 +68,15 @@ public class AppTest
 
         Runnable task = () -> {
             app.tLigth.run();
+            /*
+            try {
+                app.tLigth.run();
+            }
+            catch (Exception exc)
+            {
+                System.out.println(exc);
+            }
+             //*/
         };
 
         Thread t = new Thread(task);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="ru.spbstu.telematics.java.AppTest" time="0.014" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="ru.spbstu.telematics.java.AppTest" time="3.026" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15+36-1562"/>
@@ -27,7 +27,7 @@
     <property name="os.name" value="Windows 10"/>
     <property name="classworlds.conf" value="G:\Univer\parprog\apache_maven\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-15\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Polyspace\R2019b\runtime\win64;D:\Program Files\Polyspace\R2019b\bin;D:\Program Files\Polyspace\R2019b\polyspace\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\git.exe;C:\Program Files\PuTTY\;G:\Univer\parprog\apache_maven\bin;C:\Users\serge\AppData\Local\Microsoft\WindowsApps;C:\Users\serge\AppData\Local\GitHubDesktop\bin;G:\Univer\parprog\apache_maven\bin;G:\Univer\parprog\apache_maven;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-15\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Polyspace\R2019b\runtime\win64;D:\Program Files\Polyspace\R2019b\bin;D:\Program Files\Polyspace\R2019b\polyspace\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\bin\git.exe;C:\Program Files\PuTTY\;G:\Univer\parprog\apache_maven\bin;C:\Users\serge\AppData\Local\Programs\Python\Python37-32;C:\Users\serge\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\serge\AppData\Local\Programs\Python\Python39\;C:\Users\serge\AppData\Local\Microsoft\WindowsApps;C:\Users\serge\AppData\Local\GitHubDesktop\bin;G:\Univer\parprog\apache_maven\bin;G:\Univer\parprog\apache_maven;;C:\Program Files\JetBrains\PyCharm 2020.3\bin;;C:\Program Files\JetBrains\PyCharm Community Edition 2020.3\bin;;C:\Users\serge\.dotnet\tools;."/>
     <property name="maven.conf" value="G:\Univer\parprog\apache_maven\bin\../conf"/>
     <property name="jdk.debug" value="release"/>
     <property name="java.class.version" value="59.0"/>
@@ -60,6 +60,6 @@
     <property name="sun.stdout.encoding" value="cp866"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testApp" time="0.002"/>
-  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testB" time="0.012"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testApp" time="0.005"/>
+  <testcase classname="ru.spbstu.telematics.java.AppTest" name="testB" time="3.021"/>
 </testsuite>

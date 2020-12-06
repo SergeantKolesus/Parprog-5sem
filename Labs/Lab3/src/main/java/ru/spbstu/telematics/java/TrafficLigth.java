@@ -1,5 +1,7 @@
 package ru.spbstu.telematics.java;
 
+import sun.text.resources.ext.JavaTimeSupplementary_zh_SG;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,24 +27,11 @@ public class TrafficLigth extends Thread
         cars = new ArrayList<Car>();
 
         state = 0;
-/*
-        callbacksFree = true;
-
-        callbacks = new boolean[5];
-        callbackGiven = new boolean[5];
-         */
     }
 
     public Direction[] GetState()
     {
         return directions.get(state);
-    }
-
-    public void AddCar(Car car)
-    {
-        System.out.println("Car added");
-
-        cars.add(car);
     }
 
     public void CreateCar(char from, char to, TrafficLigth tl, int number)
@@ -73,7 +62,7 @@ public class TrafficLigth extends Thread
         }
     }
 
-    public void GiveCallback(int i, boolean state)
+    public synchronized void GiveCallback(int i, boolean state)
     {
         if( (callbacks == null) || (i >= callbacks.length) || (i >= callbacksGiven.length) )
         {
@@ -87,11 +76,15 @@ public class TrafficLigth extends Thread
         callbacks[i] = state;
         callbacksGiven[i] = true;
 
-        //System.out.println("Callback recieved " + i);
+        System.out.println("Callback recieved " + i);
     }
+
+    private int counter = 0;
 
     private boolean _callbacksGiven()
     {
+        counter++;
+
         for(int i = 0; i < callbacksGiven.length; i++)
         {
 
@@ -99,39 +92,13 @@ public class TrafficLigth extends Thread
                 return false;
         }
 
-        return true;
-    }
+        if(counter == 10) {
+            counter = 0;
 
-    public void run()
-    {
-        for(state = 0; state < cars.size(); state++)
-        {
-            _initCallbacks();
-
-            System.out.println("Traffic ligth is avaiting callbacks at state " + state + " with " + cars.size() + " linked cars") ;
-
-            while(!_callbacksGiven())
-                ;
-
-            int step = 0;
-            //callbacks = null;
-
-            for(int i = 0; i < cars.size(); i++)
-                if(callbacks[i + step] == true)
-                {
-                    cars.remove(i);
-
-                    for(int j = i; j < cars.size(); j++) {
-                        System.out.println("Car number updated to " + j);
-                        cars.get(j).SetNumber(j);
-                    }
-
-                    i--;
-                    step++;
-                }
+            System.out.println("Checked callback");
         }
 
-        isAlive = false;
+        return true;
     }
 
     public boolean turnedOn;
@@ -165,7 +132,16 @@ public class TrafficLigth extends Thread
             AwakeCars();
 
             while(!_callbacksGiven())
-                ;
+                try {
+                    Thread.sleep(1000);
+                    //System.out.println("Callbacks checked");
+                }
+            catch (InterruptedException exc) {
+                System.out.println(exc);
+            }
+
+            TurnOffCars();
+
 
             step = 0;
 
@@ -188,115 +164,4 @@ public class TrafficLigth extends Thread
 
 
     }
-
-    /*
-    private ArrayList<Direction[]> directions;
-    private int state;
-    private ArrayList<Car> cars;
-    private boolean[] callbacks;
-    private boolean[] callbackGiven;
-    private String[] carNames;
-    boolean callbacksFree;
-    //private void
-
-
-
-    public Direction[] GetState()
-    {
-        if(state != -1)
-            return directions.get(state);
-        else
-            return null;
-    }
-
-    public void AddCar(Car car)
-    {
-        cars.add(car);
-    }
-
-    public void SetCallback(int i, boolean state)
-    {
-        if(callbacksFree)
-        {
-            callbacks[i] = state;
-            callbackGiven[i] = true;
-        }
-    }
-
-    private void _clearCallback()
-    {
-        callbacksFree = false;
-
-        int s = cars.size();
-
-        callbacks = new boolean[s];
-        callbackGiven = new boolean[s];
-
-        for(int i = 0; i < s; i++)
-        {
-            callbacks[i] = false;
-            callbackGiven[i] = false;
-        }
-
-        callbacksFree = true;
-    }
-
-    private boolean _callbacksDone()
-    {
-        if(callbackGiven == null)
-            return false;
-
-        for(int i = 0; i < callbackGiven.length; i++)
-            if(!callbackGiven[i])
-                return false;
-
-        return true;
-    }
-
-    private void _prepareCars()
-    {
-        int i = 0;
-        carNames = new String[cars.size()];
-
-        for(Map.Entry<String, Car> c : cars.entrySet())
-        {
-            c.getValue().SetNumber(i);
-            carNames[i] = c.getKey();
-            i++;
-        }
-    }
-
-    private void _clearCars()
-    {
-        for(int i = 0; i < callbacks.length; i++)
-            if(callbacks[i])
-            {
-                cars.remove(carNames[i]);
-            }
-    }
-
-    public void run()
-    {
-        int tState;
-        callbacks = new boolean[5];
-
-        System.out.println( "Traffic ligth turned on" );
-
-        System.out.println(cars);
-
-        for(tState = 0; tState < 3; tState++)
-        {
-            _prepareCars();
-            _clearCallback();
-
-            while ((!_callbacksDone()))
-                ;
-
-            _clearCars();
-
-            state = -1;
-            state = tState;
-        }
-    }
-    //*/
 }
