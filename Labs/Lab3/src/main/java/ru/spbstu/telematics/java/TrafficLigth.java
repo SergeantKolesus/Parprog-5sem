@@ -79,8 +79,6 @@ public class TrafficLigth extends Thread
         System.out.println("Callback recieved " + i);
     }
 
-    private int counter = 0;
-
     private boolean _callbacksGiven()
     {
         counter++;
@@ -90,12 +88,6 @@ public class TrafficLigth extends Thread
 
             if(!callbacksGiven[i])
                 return false;
-        }
-
-        if(counter == 10) {
-            counter = 0;
-
-            System.out.println("Checked callback");
         }
 
         return true;
